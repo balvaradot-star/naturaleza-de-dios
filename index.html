@@ -37,15 +37,22 @@
         .verse-item{background:rgba(255,255,255,0.05);padding:15px;border-radius:12px;font-size:0.9rem;border-left:3px solid #ffd166;}
         .verse-item strong{color:#ffd166;display:block;margin-bottom:4px;}
 
-        /* SECCIÓN TEOLÓGICA ACTUALIZADA SIN ICONO */
-        .theology-box{background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);padding:25px;border-radius:15px;margin:25px 0;position:relative;}
+        .theology-box{background:rgba(56,189,248,0.08);border:1px solid rgba(56,189,248,0.2);padding:25px;border-radius:15px;margin:25px 0;}
         .theology-box h4{color:#38bdf8;margin-bottom:10px;font-size:1rem;text-transform:uppercase;letter-spacing:1px;}
         .theology-box p{font-size:0.92rem;line-height:1.6;color:#e2e8f0;font-style:italic;}
 
-        .btn, .next-btn{background:#ffd166;color:#02111f;border:none;padding:16px 35px;border-radius:50px;font-weight:700;cursor:pointer;transition:0.3s;}
-        .btn:hover, .next-btn:hover{background:#fff;transform:scale(1.03);}
+        /* NAVEGACIÓN */
+        .nav-buttons { display: flex; gap: 15px; margin-top: 20px; }
+        .btn, .next-btn, .prev-btn{border:none;padding:16px 35px;border-radius:50px;font-weight:700;cursor:pointer;transition:0.3s; text-transform: uppercase; letter-spacing: 1px;}
+        .btn, .next-btn { background:#ffd166; color:#02111f; flex: 2; }
+        .prev-btn { background: rgba(255,255,255,0.1); color: #fff; flex: 1; border: 1px solid rgba(255,255,255,0.2); }
+        
+        .btn:hover, .next-btn:hover { background:#fff; transform:scale(1.03); }
+        .prev-btn:hover { background: rgba(255,255,255,0.2); }
 
-        @media(max-width:768px){.hero h1{font-size:2.4rem}.question{font-size:1.6rem}}
+        .highlight{background:rgba(255,209,102,0.1); padding:20px; border-radius:18px; margin:20px 0; text-align: center; font-weight: 600;}
+
+        @media(max-width:768px){.hero h1{font-size:2.4rem}.question{font-size:1.6rem}.nav-buttons{flex-direction: column-reverse;}}
     </style>
 </head>
 <body>
@@ -76,7 +83,9 @@
                 <h4>Perspectiva Teológica</h4>
                 <p>"Si el universo fuera el resultado de fuerzas ciegas y múltiples dioses en conflicto, no habría leyes naturales constantes. La unidad de las leyes de la física apunta a la unidad de una sola Mente Creadora." — <em>Adaptado de Isaac Newton / CBA.</em></p>
             </div>
-            <button class="next-btn" onclick="nextStep()">Continuar</button>
+            <div class="nav-buttons">
+                <button class="next-btn" onclick="nextStep()">Continuar</button>
+            </div>
         </div>
     </div>
 
@@ -93,7 +102,10 @@
                 <h4>Timothy Keller</h4>
                 <p>"Dios es tan infinito que no puede ser contenido por el universo, pero es tan personal que conoce el número de cabellos de tu cabeza. Su trascendencia no anula Su cercanía."</p>
             </div>
-            <button class="next-btn" onclick="nextStep()">Continuar</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevStep()">Anterior</button>
+                <button class="next-btn" onclick="nextStep()">Continuar</button>
+            </div>
         </div>
     </div>
 
@@ -110,7 +122,10 @@
                 <h4>Comentario Bíblico Adventista</h4>
                 <p>"Que Dios sea Espíritu significa que no está sujeto a las limitaciones materiales de tiempo, espacio o decadencia. Su presencia es real, aunque no sea captada por los sentidos físicos."</p>
             </div>
-            <button class="next-btn" onclick="nextStep()">Continuar</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevStep()">Anterior</button>
+                <button class="next-btn" onclick="nextStep()">Continuar</button>
+            </div>
         </div>
     </div>
 
@@ -124,10 +139,13 @@
                 <div class="verse-item"><strong>Génesis 1:26</strong> "Entonces dijo Dios: Hagamos al hombre a nuestra imagen..."</div>
             </div>
             <div class="theology-box">
-                <h4>C.S. Lewis</h4>
-                <p>"En el nivel divino, encuentras una personalidad que es tres personas, pero que sigue siendo un solo ser, así como una dimensión superior contiene a las inferiores."</p>
+                <h4>Perspectiva Teológica</h4>
+                <p>"El Padre, el Hijo y el Espíritu Santo trabajan unidos en el plan de salvación para restaurar a la humanidad caída y acercarla nuevamente al amor de Dios."</p>
             </div>
-            <button class="next-btn" onclick="nextStep()">Continuar</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevStep()">Anterior</button>
+                <button class="next-btn" onclick="nextStep()">Continuar</button>
+            </div>
         </div>
     </div>
 
@@ -144,7 +162,10 @@
                 <h4>Max Lucado</h4>
                 <p>"Jesús es Dios moviéndose a tu vecindario. Si quieres saber qué piensa Dios de los pecadores, del dolor o de ti, mira cómo Jesús trató a la gente."</p>
             </div>
-            <button class="next-btn" onclick="nextStep()">Continuar</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevStep()">Anterior</button>
+                <button class="next-btn" onclick="nextStep()">Continuar</button>
+            </div>
         </div>
     </div>
 
@@ -161,7 +182,10 @@
                 <h4>Elena G. de White (CBA)</h4>
                 <p>"Cada rayo de luz solar, cada hoja de hierba, cada gota de lluvia... todo nos dice: 'Dios es amor'. Su carácter es la base de todo gobierno en el universo."</p>
             </div>
-            <button class="next-btn" onclick="nextStep()">Continuar</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevStep()">Anterior</button>
+                <button class="next-btn" onclick="nextStep()">Continuar</button>
+            </div>
         </div>
     </div>
 
@@ -178,7 +202,10 @@
                 <h4>Perspectiva Teológica</h4>
                 <p>"El sufrimiento no es la voluntad de Dios, sino la consecuencia de la libertad humana mal utilizada. Dios no es el autor del dolor, sino el que sufre con nosotros en él."</p>
             </div>
-            <button class="next-btn" onclick="nextStep()">Continuar</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevStep()">Anterior</button>
+                <button class="next-btn" onclick="nextStep()">Continuar</button>
+            </div>
         </div>
     </div>
 
@@ -195,7 +222,10 @@
                 <h4>Resolución</h4>
                 <p>"Dios no busca sirvientes, busca hijos. Su deseo más profundo es restaurar la relación que se rompió en el Edén."</p>
             </div>
-            <button class="next-btn" onclick="finish()">Finalizar Estudio</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevStep()">Anterior</button>
+                <button class="next-btn" onclick="finish()">Finalizar Estudio</button>
+            </div>
         </div>
     </div>
 
@@ -205,7 +235,10 @@
             <h2 class="question">Mi Respuesta a Dios</h2>
             <p style="margin-bottom: 30px; line-height: 1.8;">"Habiendo conocido quién es Dios y Su inmenso amor por mí, decido hoy entregarle mi corazón y permitir que Él guíe mi vida."</p>
             <div class="highlight" style="font-size: 1.2rem; font-family: 'Libre Baskerville'; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">¿Aceptas este compromiso hoy?</div>
-            <button class="next-btn" style="margin-top:20px" onclick="location.reload()">Reiniciar</button>
+            <div class="nav-buttons">
+                <button class="prev-btn" onclick="prevStep()">Revisar estudio</button>
+                <button class="next-btn" onclick="location.reload()">Reiniciar</button>
+            </div>
         </div>
     </div>
 
@@ -217,9 +250,12 @@
     let current = 0;
 
     function updateView() {
-        const progress = (current / (steps.length - 1)) * 100;
+        // Actualizar barra de progreso (basada en el índice actual sobre el total de preguntas)
+        const totalPreguntas = steps.length - 1; // Excluimos la pantalla final para el cálculo
+        const progress = (current / totalPreguntas) * 100;
         document.getElementById('bar').style.width = progress + '%';
         
+        // Cambiar fondo dinámico
         const newBg = steps[current].getAttribute('data-bg');
         if(newBg) bgOverlay.style.backgroundImage = `url('${newBg}')`;
     }
@@ -231,18 +267,27 @@
     }
 
     function nextStep() {
-        steps[current].classList.remove('active');
-        current++;
-        steps[current].classList.add('active');
-        updateView();
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        if(current < steps.length - 1) {
+            steps[current].classList.remove('active');
+            current++;
+            steps[current].classList.add('active');
+            updateView();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    }
+
+    function prevStep() {
+        if(current > 0) {
+            steps[current].classList.remove('active');
+            current--;
+            steps[current].classList.add('active');
+            updateView();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
     }
 
     function finish() {
-        steps[current].classList.remove('active');
-        current = steps.length - 1;
-        document.getElementById('final-screen').classList.add('active');
-        updateView();
+        nextStep();
     }
 </script>
 
