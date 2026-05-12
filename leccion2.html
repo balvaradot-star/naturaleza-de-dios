@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Descubriendo la naturaleza de Dios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #071520;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+      url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1800&auto=format&fit=crop') center/cover;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      animation: fadeUp 1s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      color: #ffd166;
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      line-height: 1.9;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #ffd166;
+      color: #0a2233;
+      text-decoration: none;
+      padding: 16px 34px;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      background: #ffe29a;
+    }
+
+    .lesson-container {
+      width: min(1000px, 92%);
+      margin: auto;
+      padding: 80px 0;
+    }
+
+    .step {
+      display: none !important;
+      animation: fadeUp 0.8s ease;
+      min-height: 80vh;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .step.active {
+      display: flex !important;
+    }
+
+    .question-card {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 30px;
+      padding: 50px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    }
+
+    .step-number {
+      color: #ffd166;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .question-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.2;
+      margin-bottom: 25px;
+      color: white;
+    }
+
+    .answer-box {
+      background: rgba(255,255,255,0.05);
+      border-left: 5px solid #ffd166;
+      padding: 28px;
+      border-radius: 18px;
+      margin: 30px 0;
+    }
+
+    .answer-box p {
+      line-height: 1.9;
+      font-size: 1.08rem;
+      margin-bottom: 18px;
+    }
+
+    .verse {
+      background: rgba(255,209,102,0.12);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 25px 0;
+      font-style: italic;
+      line-height: 1.8;
+    }
+
+    .reflection {
+      background: linear-gradient(135deg, rgba(255,209,102,0.12), rgba(255,255,255,0.04));
+      padding: 24px;
+      border-radius: 20px;
+      margin-top: 25px;
+    }
+
+    .reflection h4 {
+      color: #ffd166;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .reflection p {
+      line-height: 1.8;
+    }
+
+    .action-btn {
+      margin-top: 40px;
+      background: #ffd166;
+      color: #071520;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-4px);
+      background: #ffe29a;
+    }
+
+    .final-screen {
+      text-align: center;
+      max-width: 850px;
+    }
+
+    .final-screen h2 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: #ffd166;
+      margin-bottom: 25px;
+    }
+
+    .final-screen p {
+      font-size: 1.2rem;
+      line-height: 2;
+      margin-bottom: 25px;
+      opacity: 0.95;
+    }
+
+    .resolution-box {
+      background: rgba(255,255,255,0.06);
+      padding: 35px;
+      border-radius: 25px;
+      margin-top: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .resolution-box h3 {
+      color: #ffd166;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .resolution-box p {
+      line-height: 1.9;
+    }
+
+    .emoji {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media(max-width: 768px) {
+      .question-card {
+        padding: 30px;
+      }
+
+      .hero p,
+      .final-screen p {
+        font-size: 1.05rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>¿Cómo es realmente Dios?</h1>
+    <p>
+      Un recorrido interactivo para descubrir lo que la Biblia revela acerca de la naturaleza de Dios.
+      Sin religión complicada. Sin presión. Solo preguntas profundas, respuestas reales y una invitación a conocer a Dios de una manera diferente.
+    </p>
+
+    <button class="btn" onclick="startExperience()">Comenzar experiencia</button>
+  </div>
+</section>
+
+<section class="lesson-container" id="lesson" style="display:none;">
+
+  <!-- STEP 1 -->
+  <div class="step active">
+    <div class="question-card">
+      <div class="step-number">Pregunta 1</div>
+      <h2 class="question-title">¿Existe realmente un solo Dios?</h2>
+
+      <div class="answer-box">
+        <p>
+          La Biblia enseña que existe un solo Dios verdadero, eterno y soberano.
+          Nuestra vida no es producto del azar ni del caos.
+        </p>
+
+        <div class="verse">
+          “Un Dios y Padre de todos, el cual es sobre todos, y por todos, y en todos.” — Efesios 4:6
+        </div>
+
+        <p>
+          Esto significa que el universo tiene propósito,
+          que nuestra existencia tiene valor,
+          y que no estamos solos.
+        </p>
+      </div>
+
+      <div class="reflection">
+        <h4>Piensa por un momento</h4>
+        <p>
+          Si realmente existe un Dios creador…
+          ¿cómo cambiaría la manera en que ves tu vida?
+        </p>
+      </div>
+
+      <button class="action-btn" onclick="nextStep()">Continuar</button>
+    </div>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div class="step">
+    <div class="question-card">
+      <div class="step-number">Pregunta 2</div>
+      <h2 class="question-title">¿Es Dios distante o realmente cercano?</h2>
+
+      <div class="answer-box">
+        <p>
+          Muchas personas crecieron pensando en un Dios lejano,
+          frío o indiferente.
+          Pero la Biblia presenta un Dios cercano y profundamente personal.
+        </p>
+
+        <div class="verse">
+          “Con amor eterno te he amado.” — Jeremías 31:3
+        </div>
+
+        <p>
+          Dios escucha,
+          comprende,
+          conoce tus luchas
+          y desea relacionarse contigo.
+        </p>
+      </div>
+
+      <div class="reflection">
+        <h4>Aplicación práctica</h4>
+        <p>
+          A veces el problema no es que Dios esté lejos.
+          Es que nuestras heridas nos hicieron pensar que Él no se interesa.
+        </p>
+      </div>
+
+      <button class="action-btn" onclick="nextStep()">Seguir descubriendo</button>
+    </div>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div class="step">
+    <div class="question-card">
+      <div class="step-number">Pregunta 3</div>
+      <h2 class="question-title">¿Qué significa que Dios es Espíritu?</h2>
+
+      <div class="answer-box">
+        <div class="verse">
+          “Dios es Espíritu.” — Juan 4:24
+        </div>
+
+        <p>
+          Dios no está limitado por el espacio o el tiempo.
+          Él puede acompañar a cada persona al mismo tiempo.
+        </p>
+
+        <p>
+          Aunque no podamos verlo físicamente,
+          podemos experimentar Su presencia,
+          así como sentimos el viento aunque no podamos tocarlo.
+        </p>
+      </div>
+
+      <div class="reflection">
+        <h4>Reflexión</h4>
+        <p>
+          Tal vez hubo momentos donde pensaste que estabas solo.
+          Pero Dios ha estado más cerca de lo que imaginabas.
+        </p>
+      </div>
+
+      <button class="action-btn" onclick="nextStep()">Continuar</button>
+    </div>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div class="step">
+    <div class="question-card">
+      <div class="step-number">Pregunta 4</div>
+      <h2 class="question-title">¿Qué enseña la Biblia sobre el Padre, el Hijo y el Espíritu Santo?</h2>
+
+      <div class="answer-box">
+        <p>
+          La Biblia presenta un solo Dios revelado eternamente como Padre, Hijo y Espíritu Santo.
+        </p>
+
+        <div class="verse">
+          “La gracia del Señor Jesucristo, el amor de Dios y la comunión del Espíritu Santo sean con todos vosotros.” — 2 Corintios 13:14
+        </div>
+
+        <p>
+          Antes de que existiera el universo,
+          ya existía amor dentro de la Deidad.
+          Dios no creó el amor.
+          Dios ES amor.
+        </p>
+      </div>
+
+      <div class="reflection">
+        <h4>Pregunta profunda</h4>
+        <p>
+          Si Dios es amor,
+          entonces Su esencia siempre ha sido relacional,
+          cercana y generosa.
+        </p>
+      </div>
+
+      <button class="action-btn" onclick="nextStep()">Continuar</button>
+    </div>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div class="step">
+    <div class="question-card">
+      <div class="step-number">Pregunta 5</div>
+      <h2 class="question-title">¿Cómo podemos saber realmente cómo es Dios?</h2>
+
+      <div class="answer-box">
+        <p>
+          Jesús vino para mostrarnos perfectamente el corazón del Padre.
+        </p>
+
+        <div class="verse">
+          “El que me ha visto a mí, ha visto al Padre.” — Juan 14:9
+        </div>
+
+        <p>
+          Cuando vemos a Jesús ayudando,
+          perdonando,
+          abrazando personas heridas,
+          estamos viendo cómo es realmente Dios.
+        </p>
+      </div>
+
+      <div class="reflection">
+        <h4>Aplicación</h4>
+        <p>
+          Si quieres conocer a Dios,
+          no mires solamente religión.
+          Mira la vida de Jesús.
+        </p>
+      </div>
+
+      <button class="action-btn" onclick="nextStep()">Continuar</button>
+    </div>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div class="step">
+    <div class="question-card">
+      <div class="step-number">Pregunta 6</div>
+      <h2 class="question-title">¿Cuál es el verdadero carácter de Dios?</h2>
+
+      <div class="answer-box">
+        <div class="verse">
+          “Dios es amor.” — 1 Juan 4:8
+        </div>
+
+        <p>
+          El amor de Dios no es superficial.
+          Es un amor que restaura,
+          transforma,
+          protege
+          y salva.
+        </p>
+
+        <p>
+          La cruz demuestra hasta dónde estuvo dispuesto a llegar Dios por amor a la humanidad.
+        </p>
+      </div>
+
+      <div class="reflection">
+        <h4>Frase clave</h4>
+        <p>
+          La cruz demuestra que Dios no observa el sufrimiento desde lejos;
+          decidió entrar en él.
+        </p>
+      </div>
+
+      <button class="action-btn" onclick="nextStep()">Última pregunta</button>
+    </div>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div class="step">
+    <div class="question-card">
+      <div class="step-number">Pregunta 7</div>
+      <h2 class="question-title">¿Qué desea Dios de nosotros?</h2>
+
+      <div class="answer-box">
+        <p>
+          Dios no busca simplemente personas religiosas.
+          Él desea una relación sincera contigo.
+        </p>
+
+        <div class="verse">
+          “Y esta es la vida eterna: que te conozcan a ti.” — Juan 17:3
+        </div>
+
+        <p>
+          Dios quiere darte esperanza,
+          restaurar tu corazón
+          y caminar contigo.
+        </p>
+      </div>
+
+      <div class="reflection">
+        <h4>Reflexión final</h4>
+        <p>
+          ¿Qué cambiaría en tu vida si realmente creyeras que Dios te ama profundamente?
+        </p>
+      </div>
+
+      <button class="action-btn" onclick="nextStep()">Finalizar experiencia</button>
+    </div>
+  </div>
+
+  <!-- NEXT STEP -->
+  <div class="step">
+    <div class="final-screen">
+      <div class="emoji">✨</div>
+      <h2>Resolución final</h2>
+
+      <p>
+        Tal vez hoy descubriste algo importante:
+        Dios no es solamente una idea religiosa.
+      </p>
+
+      <p>
+        Él es un Padre cercano,
+        un Salvador que comprende el dolor humano
+        y un Dios que desea relacionarse contigo.
+      </p>
+
+      <div class="resolution-box">
+        <h3>Mi decisión</h3>
+
+        <div style="margin-top:30px; text-align:center;">
+          <button class="action-btn" onclick="restartExperience()">🔄 Reiniciar experiencia</button>
+        </div>
+
+        <p>
+          Hoy deseo conocer más a Dios,
+          comprender mejor Su carácter
+          y abrir mi corazón para caminar con Él.
+        </p>
+
+        <br>
+
+        <p>
+          🙏 “Señor, ayúdame a conocerte realmente y a experimentar Tu amor en mi vida.”
+
+        <br><br>
+
+        <div style="text-align:center; margin-top:30px;">
+          <button class="action-btn" onclick="restartExperience()">🔄 Reiniciar experiencia</button>
+        </div>
+        </p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  let currentStep = 0;
+  const steps = document.querySelectorAll('.step');
+
+  function nextStep() {
+    console.log('Advancing to next learning step');
+    steps[currentStep].classList.remove('active');
+    currentStep++;
+
+    if (currentStep < steps.length) {
+      steps[currentStep].classList.add('active');
+      window.scrollTo({ top: document.getElementById('lesson').offsetTop - 20, behavior: 'smooth' });
+    }
+  }
+
+function startExperience() {
+  currentStep = 0;
+
+  steps.forEach(step => step.classList.remove('active'));
+  steps[0].classList.add('active');
+
+  document.querySelector('.hero').style.display = 'none';
+  document.getElementById('lesson').style.display = 'block';
+  window.scrollTo({
+    top: document.getElementById('lesson').offsetTop,
+    behavior: 'smooth'
+  });
+}
+
+function restartExperience() {
+  currentStep = 0;
+
+  steps.forEach(step => step.classList.remove('active'));
+  steps[0].classList.add('active');
+
+  document.getElementById('lesson').style.display = 'none';
+  document.querySelector('.hero').style.display = 'flex';
+
+  updateProgress();
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+</script>
+
+</body>
+</html>
