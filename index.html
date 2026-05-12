@@ -29,7 +29,7 @@
         .step.active{display:block}
         @keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
 
-        .card{background:rgba(15, 23, 42, 0.95);padding:40px;border-radius:24px;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(12px);}
+        .card{background:rgba(15, 23, 42, 0.95);padding:40px;border-radius:24px;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(12px); position: relative;}
         .tag{color:#ffd166;text-transform:uppercase;letter-spacing:3px;font-size:0.75rem;margin-bottom:10px;font-weight:600;}
         .question{font-size:2rem;margin-bottom:25px;font-weight:700;line-height:1.3;}
         
@@ -52,6 +52,9 @@
 
         .highlight{background:rgba(255,209,102,0.1); padding:20px; border-radius:18px; margin:20px 0; text-align: center; font-weight: 600;}
 
+        /* FIRMA DEL DESARROLLADOR */
+        .signature { margin-top: 40px; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.4); letter-spacing: 1px; }
+
         @media(max-width:768px){.hero h1{font-size:2.4rem}.question{font-size:1.6rem}.nav-buttons{flex-direction: column-reverse;}}
     </style>
 </head>
@@ -64,6 +67,7 @@
         <h1>¿Cómo es realmente Dios?</h1>
         <p>Un estudio interactivo sobre la naturaleza de la Deidad, diseñado para quienes buscan respuestas honestas en la Biblia.</p>
         <button class="btn" onclick="startExperience()">Comenzar estudio</button>
+        <div class="signature">Desarrollado por Bladimir Alvarado</div>
     </div>
 </section>
 
@@ -240,6 +244,7 @@
                 <button class="next-btn" onclick="location.reload()">Reiniciar</button>
             </div>
         </div>
+        <div class="signature">Desarrollado por Bladimir Alvarado</div>
     </div>
 
 </section>
@@ -250,12 +255,10 @@
     let current = 0;
 
     function updateView() {
-        // Actualizar barra de progreso (basada en el índice actual sobre el total de preguntas)
-        const totalPreguntas = steps.length - 1; // Excluimos la pantalla final para el cálculo
-        const progress = (current / totalPreguntas) * 100;
+        const totalSteps = steps.length - 1; 
+        const progress = (current / totalSteps) * 100;
         document.getElementById('bar').style.width = progress + '%';
         
-        // Cambiar fondo dinámico
         const newBg = steps[current].getAttribute('data-bg');
         if(newBg) bgOverlay.style.backgroundImage = `url('${newBg}')`;
     }
